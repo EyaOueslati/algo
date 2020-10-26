@@ -1,0 +1,35 @@
+ALGORITHM array_summ_distinc_element
+VAR
+    el1,el2: ARRAY_OF[100] INTEGER;
+    t1,t2,i,j,summ: INTEGER:=0;
+BEGIN
+//remplir le 1er tableau
+   write("donner la longeur du 1er tableau")
+   READ(t1)
+   FOR i FROM 0 TO t1-2 STEP 1  DO
+       write("donner l'element a inserer")
+       READ(el1[i])
+   END_FOR
+   
+
+//remplir le 2eme tableau
+   write("donner la longeur du 2eme tableau")
+   READ(t2)
+   FOR i FROM 0 TO t2-1 STEP 1  DO
+       write("donner l'element a inserer")
+       READ(el2[i])
+   END_FOR
+//calculer la somme
+FOR i FROM 0 TO t1-1 STEP 1  DO
+    FOR j FROM 0 TO t2-1 STEP 1  DO
+        IF (el2[j]<>el1[i]) THEN
+            summ:=summ+el1[i];
+        END_IF
+
+    END_FOR
+
+END_FOR
+
+write("la somme des element distincts est" +summ)
+
+END

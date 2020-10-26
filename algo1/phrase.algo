@@ -1,0 +1,51 @@
+ALGORITHM NBR_char
+VAR
+    NBR_char, NBR_voy, NBR-mot:INTEGER;
+    phrase:string[100];
+
+BEGIN
+WRITE("ecrire une phrase")
+read(phrase)
+FOR i FROM 0 TO phrase.length-1  step  DO
+    IF (phrase[i]<> " ") AND (phrase[i]<>".") THEN
+        NBR_char++; else 
+        NBR_mot++;
+     
+    END_IF
+
+    SWITCH (phrase[i]) DO
+        case "a" : NBR_voy++; BREAK;
+        case "e" : NBR_voy++; BREAK;
+        case "i" : NBR_voy++; BREAK;
+        case "o" : NBR_voy++; BREAK;
+        case "u" : NBR_voy++; BREAK;
+        case "y" : NBR_voy++; BREAK;
+        
+    END_SWITCH
+    i++
+END_FOR
+WRITE("cette phrase compte" +NBR_mot "mot," +NBR_char "caractère dont" +NBR_voy "voyelles.") 
+END
+
+
+
+//methode controle directe sur saisie
+ALGORITHM Phrase
+VAR
+NBR_char, NBR_mot, NBR_voy: INTEGER :=0;
+car:CHAR :="";
+BEGIN
+   REPEAT
+       read(car)
+       IF (car<>" ") THEN
+           NBR_char++;
+       ELSE
+           NBR_mot++;
+       END_IF
+       IF (car:="a" OR car:="e" OR car:="i" OR car:="o" OR car:="u" OR car:="y") THEN
+           NBR_voy++;
+       END_IF
+   UNTIL (car:=".")
+   WRITE("cette phrase compte" +NBR_mot+1 "mot," +NBR_char-1 "caractère dont" +NBR_voy "voyelles.")
+    
+END
